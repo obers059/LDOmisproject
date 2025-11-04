@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="CSS/game.css">
+        <style>
+            /* Centered maroon audio bar at the bottom of the game page */
+            #audioBar{
+                position: fixed;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 18px;
+                background: #003366; /* navy blue */
+                color: #fff;
+                padding: 10px 18px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                z-index: 9999;
+                font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                border-radius: 10px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+                min-width: 320px;
+            }
+            #audioBar label{ font-size: 13px; font-weight: 600; }
+            #audioBar input[type=range]{ width: 260px; -webkit-appearance: none; appearance: none; height: 6px; background: transparent; }
+            /* Track */
+            #audioBar input[type=range]::-webkit-slider-runnable-track{ height:6px; background:#001f3d; border-radius:4px; }
+            #audioBar input[type=range]::-moz-range-track{ height:6px; background:#001f3d; border-radius:4px; }
+            /* Thumb */
+            #audioBar input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:#ffd700; box-shadow:0 2px 6px rgba(0,0,0,0.4); margin-top:-5px; }
+            #audioBar input[type=range]::-moz-range-thumb{ width:16px; height:16px; border-radius:50%; background:#ffd700; box-shadow:0 2px 6px rgba(0,0,0,0.4); }
+            #audioBar #audioVal{ font-size:13px; font-weight:600; min-width:48px; text-align:center; }
+            @media (max-width:420px){
+              #audioBar{ left: 8px; right: 8px; transform:none; width: auto; }
+              #audioBar input[type=range]{ width: 140px; }
+            }
+
+            /* Game Panel Styling */
+            .game-panel {
+                background: var(--light-blue, #e6f3ff);
+                border-radius: 15px;
+                padding: 25px;
+                box-shadow: 0 8px 24px rgba(0,51,102,0.15);
+                margin-bottom: 30px;
+            }
+
+            .game-info {
+                background: white;
+                padding: 20px;
+                border-radius: 12px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .game-info p {
+                color: #003366;
+                margin: 10px 0;
+                font-size: 1.1em;
+            }
+
+            #timer {
+                font-weight: bold;
+                color: #003366;
+                font-size: 1.2em;
+            }
+
+            .game-info label {
+                display: inline-block;
+                margin-right: 10px;
+                color: #003366;
+                font-weight: 600;
+            }
+
+            #difficulty {
+                padding: 8px 15px;
+                border: 2px solid #003366;
+                border-radius: 8px;
+                background: white;
+                color: #003366;
+                font-size: 1em;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-right: 15px;
+            }
+
+            #difficulty:hover {
+                background: #e6f3ff;
+            }
+
+            #difficulty option {
+                background: white;
+                color: #003366;
+                padding: 8px;
+            }
+
+            #startGame {
+                background: #003366;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 8px;
+                font-size: 1.1em;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 10px;
+                font-weight: 600;
+                box-shadow: 0 4px 12px rgba(0,51,102,0.2);
+            }
+
+            #startGame:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0,51,102,0.3);
+                background: #004080;
+            }
+
+            #mazeCanvas {
+                border-radius: 12px;
+                box-shadow: 0 8px 24px rgba(0,51,102,0.15);
+                background: white;
+            }
+
+            /* Fun animations */
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+
+            #startGame:active {
+                transform: scale(0.95);
+            }
+
+            .game-info p:first-child {
+                border-bottom: 2px solid #e6f3ff;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+            }
+        </style>
+</head>
+<body>
+    <!-- Navigation Menu (same on all pages) -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+
+    <h1 style="text-align: center; color: #003366; margin-bottom: 30px;">Maze Adventure Game</h1>
+    <main>
+        <div class="game-wrap">
+            <div class="game-panel">
+                <div class="game-info">
+                    <p><span style="font-size: 1.2em; color: #003366;">🎮</span> Use arrow keys or WASD to move the player</p>
+                    <p><span style="font-size: 1.2em;">⏱️</span> Time: <span id="timer">0</span>s</p>
+                    <div style="margin: 20px 0;">
+                        <label for="difficulty">🎯 Difficulty:</label>
+                        <select id="difficulty" aria-label="Select difficulty">
+                            <option value="easy">Easy (11x11)</option>
+                            <option value="normal" selected>Normal (21x21)</option>
+                            <option value="hard">Hard (31x31)</option>
+                            <option value="expert">Expert (41x41)</option>
+                        </select>
+                    </div>
+                    <button id="startGame">🎲 Start New Game</button>
+                </div>
+                <canvas id="mazeCanvas" width="640" height="640" aria-label="Maze game canvas"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (same on all pages) -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Lucas Oberstar. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <li><a href="discover.html">Discover UMD</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="game.html">Game</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/maze.js"></script>
+        <!-- Audio control bar -->
+        <div id="audioBar" role="region" aria-label="Audio controls">
+            <label for="audioVolume">Volume</label>
+            <input id="audioVolume" type="range" min="0" max="100" value="90">
+            <span id="audioVal">90%</span>
+        </div>
+
+        <script>
+            // expose a global for audio volume so the maze script can read/update
+            window.gameAudioVolume = 0.9;
+            const vol = document.getElementById('audioVolume');
+            const val = document.getElementById('audioVal');
+            vol.addEventListener('input', (e)=>{
+                const v = Number(e.target.value)/100;
+                window.gameAudioVolume = v;
+                val.textContent = Math.round(v*100) + '%';
+                // dispatch a custom event for other scripts
+                window.dispatchEvent(new CustomEvent('game-audio-volume', { detail: { value: v } }));
+            });
+        </script>
+</body>
+</html>

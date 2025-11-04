@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Oberstar - Hobbies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hobby-section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hobby-section h2 {
+            color: var(--navy);
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .hobby-section p {
+            text-align: center;
+            color: var(--muted);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,51,102,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            object-position: center;
+        }
+
+        /* Special handling for the last outdoor photo */
+        .gallery-item:last-child img {
+            object-position: top center;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu (same on all pages) -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+<h1 style="text-align: center; color: var(--navy); margin: 30px 0;">My Hobbies & Interests</h1>
+    <main>
+        <section class="hobby-section travel-section">
+            <h2>Traveling Adventures</h2>
+            <p>Exploring new places and communities with friends and family is something I look forward to every year. Recently, I had the incredible opportunity to fly to San Diego with three friends to visit another friend serving in the Marines. During our stay, we immersed ourselves in the local culture, exploring diverse restaurants, beautiful beaches, and unique shops throughout the city.</p>
+            <p>The highlight of our trip was visiting Camp Pendleton, where we got an inside look at the Marine Corps base. It was a truly eye-opening experience to see where our friend would be spending the next three years of his life, and it gave us a deeper appreciation for military life. This journey, like many others, reinforced my passion for creating lasting memories through travel and experiencing new perspectives with the people closest to me.</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="images/20240314_235323_81F358.jpeg" alt="Travel adventure 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG_2533.jpeg" alt="Travel adventure 2">
+                </div>
+            </div>
+        </section>
+
+        <section class="hobby-section">
+            <h2>Outdoor Activities</h2>
+            <p>In my free time, I have a deep passion for spending time in the outdoors, particularly hunting and fishing. What makes these experiences truly special is sharing these moments with others, creating lasting memories in nature.</p>
+            <p>Throughout most of the year, you'll find me pursuing walleye across Minnesota and Canada's pristine waters during the winter, spring, and summer months. When autumn arrives, I shift my focus to bird hunting in the diverse landscapes of Minnesota and South Dakota. The most memorable trips are those rare opportunities when I can combine both pursuits, experiencing the best of hunting and fishing in a single adventure.</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="images/IMG_4376.JPG" alt="Outdoor activity - Fishing">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG_3208.JPG" alt="Outdoor activity - Hunting">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG_2448.jpeg" alt="Outdoor activity - Nature">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG_5451.jpeg" alt="Outdoor activity - Fishing">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG_2207.JPG" alt="Outdoor activity - Ice Fishing">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG_8257.jpeg" alt="Outdoor activity - Fishing">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same on all pages) -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Lucas Oberstar. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <li><a href="discover.html">Discover UMD</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="game.html">Game</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>

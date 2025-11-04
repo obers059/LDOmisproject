@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Oberstar - Discover UMD</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .discover-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .content-section {
+            background: var(--light-blue);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,51,102,0.1);
+        }
+
+        .content-section h2 {
+            color: var(--navy);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .content-section p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .video-section {
+            position: sticky;
+            top: 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,51,102,0.1);
+        }
+
+        .video-section h2 {
+            color: var(--navy);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .discover-container {
+                grid-template-columns: 1fr;
+            }
+            .video-section {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu (same on all pages) -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+<h1 style="text-align: center; color: var(--navy); margin: 30px 0;">Discover UMD</h1>
+    <main class="discover-container">
+        <div class="left-column">
+            <section class="content-section">
+                <h2>Why I Chose UMD</h2>
+                <p>My decision to attend UMD was influenced by the positive experiences of my family and friends who graduated from here. Their enthusiastic recommendations and fond memories of their time at UMD played a significant role in my choice.</p>
+                <p>Another major factor that drew me to UMD was its unique location. The campus provides quick and easy access to outdoor activities, which aligns perfectly with my passion for nature and outdoor recreation. This balance of quality education and outdoor opportunities made UMD the ideal choice for my college experience.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>What I Love About Duluth</h2>
+                <p>One of the most captivating aspects of Duluth is its stunning location alongside Lake Superior. The views from campus looking down the hill to the vast expanse of the lake never cease to amaze me, offering a unique and inspiring backdrop to daily student life.</p>
+                <p>What makes Duluth truly special is its distinct four-season experience, something that sets it apart from many other college towns across the country. Each season brings its own character and beauty to the city, from the vibrant fall colors and snowy winters to the fresh spring renewals and warm summer days by the lake.</p>
+            </section>
+        </div>
+
+        <div class="video-section">
+            <h2>Experience UMD</h2>
+            <div class="video-container">
+                <!-- Replace with your UMD video embed code -->
+                <iframe src="about:blank" title="UMD Campus Video" allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (same on all pages) -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Lucas Oberstar. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <li><a href="discover.html">Discover UMD</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="game.html">Game</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>

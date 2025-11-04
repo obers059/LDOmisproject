@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Page Title</title>
+    <link rel="stylesheet" href="css/style.css">
+        <style>
+            /* Home page specific styles */
+            :root{ 
+                --navy: #003366;
+                --light-blue: #e6f3ff;
+                --very-light-blue: #f5f9ff;
+                --muted: #666;
+            }
+            main.home{
+                max-width:1100px; margin:24px auto; padding:0 16px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            }
+            .hero{ display:flex; flex-direction:column; gap:18px; align-items:center; margin-bottom:28px; }
+            .headshot{ width:auto; max-width:500px; border-radius:12px; overflow:hidden; box-shadow:0 10px 26px rgba(0,0,0,0.14); }
+            .headshot img{ display:block; max-width:100%; height:auto; }
+            .intro{ width:100%; max-width:820px; }
+            .intro h2{ margin:8px 0 10px; color:var(--navy); text-align:center; }
+            .intro p{ margin:0 0 12px; color:var(--muted); line-height:1.5; text-align:center }
+
+            .welcome-video{ margin:28px auto 36px; display:flex; flex-direction:column; align-items:center; max-width:820px; }
+            .welcome-video h3{ color:var(--navy); margin-bottom:12px; }
+            .welcome-video video{ width:100%; border-radius:10px; box-shadow:0 10px 28px rgba(0,0,0,0.14); }
+
+            .hobbies-section { 
+                margin: 40px 0;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 24px;
+                padding: 20px;
+            }
+            .hobby-card {
+                background: var(--light-blue);
+                border-radius: 12px;
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0,51,102,0.1);
+                text-align: center;
+                transition: transform 0.2s ease;
+            }
+            .hobby-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 16px rgba(0,51,102,0.15);
+            }
+            .hobby-card img {
+                width: 100%;
+                height: auto;
+                max-height: 300px;
+                object-fit: contain;
+                border-radius: 8px;
+                margin-bottom: 16px;
+                background: white;
+                padding: 10px;
+            }
+            .hobby-card h3 {
+                color: var(--navy);
+                margin-bottom: 12px;
+            }
+            .hobby-card p {
+                color: var(--muted);
+                line-height: 1.5;
+            }
+            @media (max-width:720px){ 
+                .headshot{ width:260px; height:260px; flex:0 0 260px; } 
+                .welcome-video video{ max-width:100%; } 
+            }
+        </style>
+</head>
+<body>
+    <!-- Navigation Menu (same on all pages) -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+<h1 style="text-align:center; color:var(--navy);">Welcome</h1>
+        <main class="home">
+            <section class="hero" aria-labelledby="intro-title">
+                <div class="headshot" aria-hidden="false">
+                    <img src="images/IMG_1536.JPG" alt="Professional headshot">
+                </div>
+                <div class="intro">
+                    <h2 id="intro-title">Hi — I'm Lucas Oberstar</h2>
+                    <p>I'm a sophomore pre-business student at the University of Minnesota Duluth, pursuing my interests in either finance or consumer insights and analytics. I combine my academic pursuits with my passion for outdoor adventures and exploring new places.</p>
+                    <p>Welcome to my portfolio site where you can learn about my academic journey, experiences, and interests in both the outdoors and travel.</p>
+                </div>
+            </section>
+
+            <section class="hobbies-section" aria-label="My Hobbies">
+                <div class="hobby-card">
+                    <img src="images/IMG_4087.JPG" alt="Traveling photo">
+                    <h3>Traveling</h3>
+                    <p>I'm passionate about exploring new places, experiencing different communities, and creating unforgettable memories through travel adventures with friends and family.</p>
+                </div>
+                <div class="hobby-card">
+                    <img src="images/Lucas 2 .JPG" alt="Outdoors photo">
+                    <h3>Outdoors</h3>
+                    <p>In my free time I love spending time in the outdoors with my friends and family. Some of my favorite ways to spend time in nature include hunting, fishing, and camping.</p>
+                </div>
+            </section>
+            </section>
+
+            <section class="welcome-video" aria-labelledby="welcome-title">
+                <h3 id="welcome-title">Welcome video</h3>
+                <!-- Replace src with your 30-60s video in the videos/ folder -->
+                <video controls muted playsinline preload="metadata" poster="images/video-poster.jpg">
+                    <source src="videos/welcome.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </section>
+        </main>
+
+    <!-- Footer (same on all pages) -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Lucas Oberstar. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <li><a href="discover.html">Discover UMD</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="game.html">Game</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

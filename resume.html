@@ -1,0 +1,86 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Resume</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        main { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .resume-container { 
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        .resume-actions {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #003366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 10px 0;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .download-btn:hover {
+            background: #900021;
+        }
+        .resume-viewer {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu (same on all pages) -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+<h1 style="text-align:center; color:#003366;">My Resume</h1>
+    <main>
+        <div class="resume-container">
+            <div class="resume-actions">
+                <a href="files/MIS 2201 Resume.pdf" download class="download-btn">Download Resume (PDF)</a>
+            </div>
+            <iframe src="files/MIS 2201 Resume.pdf" class="resume-viewer" title="Resume PDF Viewer">
+                <p>Your browser doesn't support embedded PDFs. 
+                   <a href="files/MIS 2201 Resume.pdf">Click here to download the PDF file.</a>
+                </p>
+            </iframe>
+        </div>
+    </main>
+
+    <!-- Footer (same on all pages) -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Lucas Oberstar. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <li><a href="discover.html">Discover UMD</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="game.html">Game</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
