@@ -197,12 +197,96 @@
     <script src="js/maze.js"></script>
         <!-- Audio control bar -->
         <div id="audioBar" role="region" aria-label="Audio controls">
+            <button id="musicToggle" type="button">🎵 Play Music</button>
             <label for="audioVolume">Volume</label>
             <input id="audioVolume" type="range" min="0" max="100" value="90">
             <span id="audioVal">90%</span>
         </div>
 
         <script>
+            // Simple Web Audio API music generator
+            let audioContext = null;
+            let mainOscillator = null;
+            let mainGain = null;
+            let musicPlaying = false;
+            let melodyInterval = null;
+            const musicToggle = document.getElementById('musicToggle');
+
+            // Elevator music melody (C major pentatonic)
+            const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 392.00, 329.63, 293.66]; // C D E G A G E D
+            let noteIndex = 0;
+
+            function startElevatorMusic() {
+                try {
+                    // Create audio context
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    
+                    // Create main gain node for volume control
+                    mainGain = audioContext.createGain();
+                    mainGain.gain.value = (window.gameAudioVolume || 0.9) * 0.15; // Quieter
+                    mainGain.connect(audioContext.destination);
+
+                    // Function to play each note
+                    function playNote() {
+                        if (!musicPlaying) return;
+
+                        // Create oscillator for this note
+                        const osc = audioContext.createOscillator();
+                        const noteGain = audioContext.createGain();
+                        
+                        osc.type = 'sine';
+                        osc.frequency.value = notes[noteIndex];
+                        
+                        // Envelope
+                        noteGain.gain.setValueAtTime(0, audioContext.currentTime);
+                        noteGain.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.05);
+                        noteGain.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.45);
+                        
+                        osc.connect(noteGain);
+                        noteGain.connect(mainGain);
+                        
+                        osc.start(audioContext.currentTime);
+                        osc.stop(audioContext.currentTime + 0.5);
+                        
+                        // Move to next note
+                        noteIndex = (noteIndex + 1) % notes.length;
+                    }
+
+                    // Play notes at regular intervals
+                    playNote(); // Play first note immediately
+                    melodyInterval = setInterval(playNote, 500); // Every 500ms
+                    
+                    console.log('Music started successfully');
+                } catch (error) {
+                    console.error('Failed to start music:', error);
+                    alert('Could not start audio. Try clicking again.');
+                }
+            }
+
+            function stopElevatorMusic() {
+                musicPlaying = false;
+                if (melodyInterval) {
+                    clearInterval(melodyInterval);
+                    melodyInterval = null;
+                }
+                if (audioContext) {
+                    audioContext.close();
+                    audioContext = null;
+                }
+                noteIndex = 0;
+            }
+
+            musicToggle?.addEventListener('click', () => {
+                if (musicPlaying) {
+                    stopElevatorMusic();
+                    musicToggle.textContent = '🎵 Play Music';
+                } else {
+                    musicPlaying = true;
+                    startElevatorMusic();
+                    musicToggle.textContent = '🔇 Stop Music';
+                }
+            });
+
             // expose a global for audio volume so the maze script can read/update
             window.gameAudioVolume = 0.9;
             const vol = document.getElementById('audioVolume');
@@ -210,6 +294,9 @@
             vol.addEventListener('input', (e)=>{
                 const v = Number(e.target.value)/100;
                 window.gameAudioVolume = v;
+                if (mainGain) {
+                    mainGain.gain.value = v * 0.15; // Update music volume
+                }
                 val.textContent = Math.round(v*100) + '%';
                 // dispatch a custom event for other scripts
                 window.dispatchEvent(new CustomEvent('game-audio-volume', { detail: { value: v } }));

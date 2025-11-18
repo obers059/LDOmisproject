@@ -3,8 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Page Title</title>
+    <title>Lucas Oberstar - Career Goals</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .career-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .career-section {
+            background: var(--light-blue);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,51,102,0.1);
+            min-height: 300px;
+        }
+
+        .career-section h2 {
+            color: var(--navy);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid var(--navy);
+            padding-bottom: 10px;
+        }
+
+        .career-section h3 {
+            color: var(--navy);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .career-section p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .career-section ul {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .career-section li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .career-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Menu (same on all pages) -->
@@ -18,10 +75,44 @@
             <li><a href="game.html">Game</a></li>
         </ul>
     </nav>
-<h1>This is My career page</h1>
-    <!-- Your page content goes here -->
-    <main>
-        <!-- Page-specific content -->
+<h1 style="text-align: center; color: var(--navy); margin: 30px 0;">Career Goals & Aspirations</h1>
+    <main class="career-container">
+        <div class="left-column">
+            <section class="career-section">
+                <h2>Thorne Brothers</h2>
+                
+                <h3>Contact Information</h3>
+                <p><strong>Phone:</strong> (763) 372-3782</p>
+                <p><strong>Email:</strong> info@thornebros.com</p>
+                <p><strong>Address:</strong> 10091 Central Avenue NE<br>Blaine, MN 55434</p>
+                
+                <h3>My Experience</h3>
+                <p>I hope to continue working at Thorne Brothers in the future because my three years there have given me a genuine appreciation for the business and its potential for growth. I care about helping the company expand, and I value the strong sense of community I've built with my coworkers.</p>
+                
+                <h3>My Qualifications</h3>
+                <p>My qualifications come from both my consumer insights and analytics experience and my extensive knowledge of the store itself. Together, these skills position me to make meaningful improvements and help move the store forward.</p>
+                
+                <h3>My Skills</h3>
+                <p>My strong communication skills and extensive fishing knowledge allow me to excel in this role and provide valuable support to both customers and the team. I have developed the ability to connect with customers on a personal level, understanding their needs and recommending the right products and techniques. My hands-on experience with various fishing methods, equipment, and local fishing conditions enables me to offer expert guidance that builds customer trust and loyalty. Additionally, my collaborative approach helps foster a positive team environment where knowledge sharing and mutual support drive overall success.</p>
+            </section>
+        </div>
+
+        <div class="right-column">
+            <section class="career-section">
+                <h2>Simms Fishing</h2>
+                
+                <h3>Contact Information</h3>
+                <p><strong>Phone:</strong> 1 (888) 585-3570</p>
+                <p><strong>Email:</strong> customer-care@simmsfishing.com</p>
+                <p><strong>Address:</strong> 177 Garden Drive, Bozeman, MT 59718</p>
+                
+                <h3>Why I Am Interested</h3>
+                <p>I'm interested in pursuing a data analytics career at Simms Fishing because it aligns perfectly with both my personal and professional passions. My genuine interest in fishing makes the work especially meaningful, and the Bozeman location is an environment where I would love to live and grow professionally. On top of that, Simms' strong reliance on data analytics in their day-to-day operations makes it an ideal place for me to apply my skills, contribute to meaningful insights, and help drive informed decision-making across the company.</p>
+                
+                <h3>My Qualifications</h3>
+                <p>My background in data analytics and my strong foundation in fishing uniquely position me to succeed in this role. I can interpret and apply data in meaningful ways while also understanding the needs, preferences, and behaviors of anglers. This combination allows me to bridge the gap between technical insights and real-world fishing experience, ultimately helping drive smarter, more effective decisions.</p>
+            </section>
+        </div>
     </main>
 
     <!-- Footer (same on all pages) -->
